@@ -1,9 +1,9 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
 import {
   PanGestureHandler,
-  PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
+  PanGestureHandlerGestureEvent
+} from "react-native-gesture-handler";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -11,43 +11,42 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withDecay,
-  withSpring,
-} from 'react-native-reanimated';
-import {clamp, getYForX} from 'react-native-redash';
+  withSpring
+} from "react-native-reanimated";
+import { clamp, getYForX } from "react-native-redash";
 import {
   CURSOR_BORDER_SIZE,
   CURSOR_PROPS,
   CURSOR_SIZE,
   CURSOR_TOTAL_SIZE,
-  SIZE,
-} from '../config';
+  SIZE
+} from "../config";
 
-type Offset = {x: number; y: number};
+type Offset = { x: number; y: number };
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFillObject
   },
   cursor: {
     width: CURSOR_SIZE,
     height: CURSOR_SIZE,
     borderRadius: CURSOR_SIZE,
-    backgroundColor: '#367be2',
+    backgroundColor: "#367be2",
     borderWidth: CURSOR_BORDER_SIZE,
-    borderColor: '#fff',
+    borderColor: "#fff"
   },
   cursorRibbleOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(128, 128, 128, .39)',
-    borderRadius: CURSOR_SIZE,
-  },
+    backgroundColor: "rgba(128, 128, 128, .39)",
+    borderRadius: CURSOR_SIZE
+  }
 });
 
 const Cursor = ({
   transition,
   graphPath,
   canvasWidth = SIZE,
-  canvasHeight = SIZE,
-  translation,
+  translation
 }: CURSOR_PROPS) => {
   const activeStatusTransition = useSharedValue(0);
 
@@ -63,7 +62,7 @@ const Cursor = ({
       scale = 1;
     }
     return {
-      transform: [{translateX: x}, {translateY: y}, {scale}],
+      transform: [{ translateX: x }, { translateY: y }, { scale }]
     };
   }, [graphPath.value]);
 
@@ -72,10 +71,10 @@ const Cursor = ({
       activeStatusTransition.value,
       [0, 1],
       [0, 1],
-      Extrapolate.CLAMP,
+      Extrapolate.CLAMP
     );
     return {
-      transform: [{scale: scaleRatio * 1.75}],
+      transform: [{ scale: scaleRatio * 1.75 }]
     };
   });
 
@@ -83,26 +82,26 @@ const Cursor = ({
     PanGestureHandlerGestureEvent,
     Offset
   >({
-    onStart: ({translationX}, ctx) => {
+    onStart: ({}, ctx) => {
       ctx.x = translation.x.value;
       ctx.y = translation.y.value;
       activeStatusTransition.value = withSpring(1);
     },
-    onActive: ({translationX, translationY}, ctx) => {
+    onActive: ({ translationX, translationY }, ctx) => {
       translation.x.value = clamp(ctx.x + translationX, 0, canvasWidth);
       translation.y.value = ctx.y + translationY;
     },
-    onEnd: ({velocityX, velocityY}) => {
+    onEnd: ({ velocityX }) => {
       translation.x.value = withDecay(
         {
           velocity: velocityX,
-          clamp: [0, canvasWidth],
+          clamp: [0, canvasWidth]
         },
         () => {
           activeStatusTransition.value = withSpring(0);
-        },
+        }
       );
-    },
+    }
   });
   return (
     <PanGestureHandler onGestureEvent={onGestureEvent}>

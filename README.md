@@ -7,7 +7,7 @@ A React Native graph component that run at 60 fps, even on low-end devices.
 ## Installation
 
 1. Run: `$ npm install --save react-native-reanimated-graph or yarn add react-native-reanimated-graph`
-2. As [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) are peer dependencies, ensure you have them installed and linked properly. Check peer dependencies on package.json file make sure correct version installed.
+2. pod install
 
 ## Usage
 

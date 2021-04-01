@@ -22,7 +22,9 @@
     "react-native-redash": "^16.0.5",
     "react-native-svg": "^12.1.0",
     "d3-scale": "^3.2.2",
-    "d3-shape": "^2.0.0"
+    "d3-shape": "^2.0.0",
+    "react-native-reanimated": "^2.0.0",
+    "react-native-gesture-handler": "^1.9.0"
   },
   "devDependencies": {
     "@types/react-native": "^0.62.0",
@@ -35,9 +37,7 @@
   },
   "peerDependencies": {
     "react": "16.11.0",
-    "react-native": "0.62.2",
-    "react-native-reanimated": "^2.0.0",
-    "react-native-gesture-handler": "^1.9.0"
+    "react-native": "0.62.2"
   },
   "files": [
     "lib"
