@@ -17,7 +17,7 @@ Avalible Props:
 | ------------------------- | ---------------------------------------------------------------- |
 | graphs                    | { axisValues: Array<{x: number, y: number}>, graphName: string } |
 | tabsCustomContainerStyle? | StyleProp<ViewStyle>                                             |
-| onCursorMove?             | ((point: AXIS_DATA) => void)                                     |
+| onCursorMove?             | ((point: {x: number, y: number}) => void)                        |
 
 ```js
 import Accordion from "react-native-reanimated-graph";
