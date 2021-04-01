@@ -11,8 +11,28 @@ A React Native graph component that run at 60 fps, even on low-end devices.
 
 ## Usage
 
+Avalible Props:
+
+| Props                     | Type                                                             |
+| ------------------------- | ---------------------------------------------------------------- |
+| graphs                    | { axisValues: Array<{x: number, y: number}>, graphName: string } |
+| tabsCustomContainerStyle? | StyleProp<ViewStyle>                                             |
+| onCursorMove?             | ((point: AXIS_DATA) => void)                                     |
+
 ```js
 import Accordion from "react-native-reanimated-graph";
+
+
+const graphs = [
+    {
+      axisValues: [{x: 1,y: 2},{x: 2,y: 5}, {x: 8,y: 9}],
+      graphName: 'GraphOne',
+    }
+    {
+       axisValues: [{x: 1,y: 2},{x: 2,y: 5}, {x: 8,y: 9}],
+       graphName: 'GraphTwo',
+    }
+];
 
 const App = () => (
   <View style={styles.container}>
