@@ -22,7 +22,6 @@ Avalible Props:
 ```js
 import CurveGraph from "react-native-reanimated-graph";
 
-
 const graphs = [
     {
       axisValues: [{x: 1,y: 2},{x: 2,y: 5}, {x: 8,y: 9}],
