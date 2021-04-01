@@ -82,7 +82,7 @@ const Cursor = ({
     PanGestureHandlerGestureEvent,
     Offset
   >({
-    onStart: ({}, ctx) => {
+    onStart: (_event, ctx) => {
       ctx.x = translation.x.value;
       ctx.y = translation.y.value;
       activeStatusTransition.value = withSpring(1);
