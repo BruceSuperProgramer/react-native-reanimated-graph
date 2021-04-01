@@ -20,7 +20,7 @@ Avalible Props:
 | onCursorMove?             | ((point: {x: number, y: number}) => void)                        |
 
 ```js
-import Accordion from "react-native-reanimated-graph";
+import CurveGraph from "react-native-reanimated-graph";
 
 
 const graphs = [
