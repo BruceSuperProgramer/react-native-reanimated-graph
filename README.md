@@ -1,37 +1,50 @@
-# react-native-reanimated-accordion
+# react-native-reanimated-graph
 
-A React Native accordion component that run at 60 fps, even on low-end devices.
+A React Native graph component that run at 60 fps, even on low-end devices.
 
-![Screenshot of React Native accordion](https://firebasestorage.googleapis.com/v0/b/publicimage-6ea8e.appspot.com/o/ezgif.com-gif-maker.gif?alt=media&token=d1fa5eac-21a1-41e8-a32f-7b972d6c8d98)
+![Screenshot of React Native Reanimated Graph](https://firebasestorage.googleapis.com/v0/b/publicimage-6ea8e.appspot.com/o/react-native-reanimated-graph.gif?alt=media&token=e0874a8b-2a42-47aa-a96b-e64071f7fbe1)
 
 ## Installation
 
-1. Run: `$ npm install --save react-native-reanimated-accordion or yarn add react-native-reanimated-accordion`
-2. As [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) are peer dependencies, ensure you have them installed and linked properly. Check peer dependencies on package.json file make sure correct version installed.
+1. Run: `$ npm install --save react-native-reanimated-graph or yarn add react-native-reanimated-graph`
+2. As [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) and [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) are peer dependencies, ensure you have them installed and linked properly. Check peer dependencies on package.json file make sure correct version installed.
 
 ## Usage
 
 ```js
-import Accordion from "react-native-reanimated-accordion";
+import Accordion from "react-native-reanimated-graph";
 
 const App = () => (
-  <Accordion
-    headerComponent={
+  <View style={styles.container}>
+    <Svg
+      width={SVG_XY_TEXT_CONTAINER_WIDTH}
+      height={SVG_XY_TEXT_CONTAINER_HEIGHT}
+      style={styles.svgXYTextContainer}
+    >
+      <Defs>
+        <LinearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient">
+          <Stop stopColor="#FEFFFF" offset="100%" />
+          <Stop stopColor="#eef6fd" offset="80%" />
+          <Stop stopColor="#CDE3F8" offset="0%" />
+        </LinearGradient>
+      </Defs>
+      <Rect
+        width={SVG_XY_TEXT_CONTAINER_WIDTH}
+        height={SVG_XY_TEXT_CONTAINER_HEIGHT}
+        fill="url(#gradient)"
+        strokeWidth="0"
+      />
       <View>
-        <Text>Header</Text>
+        <Text style={styles.xyText}>{`x:${x}`}</Text>
+        <Text style={styles.xyText}>{`y:${y}`}</Text>
       </View>
-    }
-    bodyComponent={
-      <View
-        style={{
-          backgroundColor: "green",
-          width: "100%",
-          height: 500
-        }}
-      >
-        <Text>Content</Text>
-      </View>
-    }
-  />
+    </Svg>
+
+    <CurveGraph
+      graphs={graphs}
+      tabsCustomContainerStyle={{ marginTop: 100 }}
+      onCursorMove={onCursorMove}
+    />
+  </View>
 );
 ```
