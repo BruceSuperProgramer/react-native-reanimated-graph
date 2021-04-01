@@ -1,4 +1,0 @@
-/**
- * @worklet
- */
-export declare const move: <T>(input: T[], from: number, to: number) => T[];
