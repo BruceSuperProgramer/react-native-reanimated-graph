@@ -1,6 +1,6 @@
 {
   "name": "react-native-reanimated-graph",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reanimated graph react-native react-native-graph",
   "types": "lib/Graph.d.ts",
   "main": "lib/Graph",
